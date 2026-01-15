@@ -21,6 +21,5 @@ public class Main {
         book.setPrice(BigDecimal.valueOf(120));
         bookDao.update(book);
         bookDao.deleteById(2L);
-        // test other methods form BookDao
     }
 }
