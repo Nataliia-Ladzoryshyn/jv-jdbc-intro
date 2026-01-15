@@ -29,7 +29,7 @@ public class BookDaoImpl implements BookDao {
             int affectedRows = statement.executeUpdate(); // кількість рядків, які ми додали
             if (affectedRows < 1) {
                 throw new RuntimeException("Expected to insert at leas one rows,"
-                        + " but inserted 0 rows ");
+                        + " but inserted 0 rows");
             }
             // отримаємо з statement ідентифікатор, який згенерувався в базі даних
             ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -40,7 +40,7 @@ public class BookDaoImpl implements BookDao {
                 book.setId(id);
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't add a new book" + book, e);
+            throw new DataProcessingException("Can not add a new book " + book, e);
         }
         return book;
     }
@@ -75,7 +75,7 @@ public class BookDaoImpl implements BookDao {
             }
 
         } catch (SQLException e) {
-            throw new DataProcessingException("Can not find any data for id=" + id, e);
+            throw new DataProcessingException("Can not find any data for id = " + id, e);
         }
 
         return Optional.empty();
@@ -118,7 +118,7 @@ public class BookDaoImpl implements BookDao {
             statement.setLong(3,book.getId());
             int updatedRows = statement.executeUpdate();
             if (updatedRows < 1) {
-                throw new RuntimeException("Can't update book with id=" + book.getId());
+                throw new RuntimeException("Can't update book with id = " + book.getId());
             }
             return book;
         } catch (SQLException e) {
@@ -136,7 +136,7 @@ public class BookDaoImpl implements BookDao {
             int affectedRows = statement.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {
-            throw new DataProcessingException("Can no delete data with id=" + id,e);
+            throw new DataProcessingException("Can not delete data with id = " + id,e);
         }
     }
 
